@@ -7,11 +7,71 @@ import type { ReleaseEntry } from '../types/site';
  */
 export const RELEASES: ReleaseEntry[] = [
   {
-    version: '0.1.1',
-    tag: 'v0.1.1',
+    version: '0.1.2',
+    tag: 'v0.1.2',
     date: '2026-11-25',
     status: 'latest',
     statusLabel: '最新正式版',
+    summary:
+      '顶栏窄屏自适应修复：修复右侧检查器（尤其是停靠式实时预览）拉宽时，中间区域顶部工具栏横向溢出并与右边栏重合的样式问题，并为主舞台补充容器查询三级响应式布局。',
+    highlights: [
+      '修复右侧检查器拉宽压缩主舞台时，顶部工具栏向右溢出并与右边栏重合的样式问题',
+      '为主舞台引入 @container 容器查询三级响应规则，窄宽下自动将「点选元素 / 页面自检 / 打开页面」折叠为图标按钮',
+      '模型选择器与面包屑随中间区可用宽度自适应缩放与省略，保留空白顶栏拖拽与全部功能按钮可用',
+      '同步发布 Windows (x64) 与 macOS (Apple Silicon) 双端安装包及 Ed25519 签名验证清单'
+    ],
+    groups: [
+      {
+        kind: 'fix',
+        label: '界面布局修复',
+        items: [
+          '为主舞台容器与顶栏补充横向溢出裁剪与弹性收缩约束，移除多余占位节点，彻底消除右侧实时预览拉宽后顶栏按钮压入右边栏的重合现象。',
+          '为「打开页面 / 预览草稿」「点选元素」「页面自检」按钮增加窄宽图标折叠态（保留 Tooltip 悬停提示），在 400px 级窄舞台下仍可完整点击全部工具栏功能。'
+        ]
+      },
+      {
+        kind: 'improve',
+        label: '响应适配与发布资产',
+        items: [
+          '模型选择器改用基于主舞台宽度的容器单位（cqi）与三级断点自适应缩放，面包屑在窄宽下优先隐藏环境标签与次要层级以保住当前页面标题。',
+          '在 GitHub Release v0.1.2 同步发布 Windows (x64) 与 macOS (Apple Silicon) 双端安装包、增量更新元数据及 Ed25519 签名验证清单（共 10 个资产）。'
+        ]
+      }
+    ],
+    assets: [
+      {
+        id: 'v0.1.2-win-x64',
+        platform: 'win-x64',
+        label: 'Windows (x64)',
+        arch: 'x64 · NSIS 安装程序',
+        filename: 'Lacewing v0.1.2 · Windows 安装包 (.exe)',
+        sizeText: '175.1 MB',
+        sha256: '440a21bd154dbc580126cc59bd0cfd05ac69a3c7055f6c9cfc349c5d72335580',
+        downloadPath:
+          'https://github.com/TingLen/Lacewing-agent-release/releases/download/v0.1.2/lacewing-agent-0.1.2-win-x64.exe',
+        note: '原始大小 183,594,290 字节 · 免 Node 免导证书，支持应用内一键升级'
+      },
+      {
+        id: 'v0.1.2-mac-arm64',
+        platform: 'mac-arm64',
+        label: 'macOS (Apple Silicon)',
+        arch: 'arm64 · DMG 磁盘映像',
+        filename: 'Lacewing v0.1.2 · macOS 安装包 (.dmg)',
+        sizeText: '188.3 MB',
+        sha256: 'b87abd483921c2f214a0bf2bba92f21852c13675a3e55aab4a13af5e35bd95a7',
+        downloadPath:
+          'https://github.com/TingLen/Lacewing-agent-release/releases/download/v0.1.2/lacewing-agent-0.1.2-mac-arm64.dmg',
+        note: '原始大小 197,491,706 字节 · 需拖入「应用程序」再打开；暂未发布 Intel Mac 包'
+      }
+    ],
+    releaseUrl: 'https://github.com/TingLen/Lacewing-agent-release/releases/tag/v0.1.2'
+  },
+  {
+    version: '0.1.1',
+    tag: 'v0.1.1',
+    date: '2026-11-25',
+    status: 'previous',
+    statusLabel: '历史正式版',
     summary:
       '知识库更新与环境提示降噪优化：同步 lowcode-next 最新 dev（18cc3cca）扩展后端标准方法索引至 74 个 Handler / 565 个 Method；移除工作台常驻红色「受保护」标识，将写回二次确认调整为温和琥珀色提示。',
     highlights: [
@@ -276,7 +336,7 @@ export const RELEASES: ReleaseEntry[] = [
         sha256: 'c5e5b2a2c2c9f3f2f7241a16712651f7c2aa31f09b2f312aaefa1e178de6e2b2',
         downloadPath:
           'https://github.com/TingLen/Lacewing-agent-release/releases/download/v0.0.10/lacewing-agent-0.0.10-mac-arm64.dmg',
-        note: '原始大小 189,502,898 字节 · macOS 独立安装助手验收基础版（建议优先下载最新 v0.1.1）'
+        note: '原始大小 189,502,898 字节 · macOS 独立安装助手验收基础版（建议优先下载最新 v0.1.2）'
       }
     ],
     releaseUrl: 'https://github.com/TingLen/Lacewing-agent-release/releases/tag/v0.0.10'
