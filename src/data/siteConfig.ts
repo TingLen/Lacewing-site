@@ -10,7 +10,7 @@ export const siteConfig: SiteConfig = {
   tagline: '面向 LC-IDE 的桌面端 AI 开发与配置工作台',
   description:
     '用自然语言驱动 LC-IDE 页面搭建、系统配置、停靠式实时预览、后端方法排查与远程插件开发，所有变更经本地草稿、静态校验与差异确认后安全写回。',
-  latestVersion: 'v0.1.0',
+  latestVersion: 'v0.1.1',
   releaseDate: '2026-11-25',
   releaseRepo: 'TingLen/Lacewing-agent-release',
   releaseRepoUrl: 'https://github.com/TingLen/Lacewing-agent-release/releases',

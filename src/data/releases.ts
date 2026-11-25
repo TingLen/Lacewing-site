@@ -7,11 +7,72 @@ import type { ReleaseEntry } from '../types/site';
  */
 export const RELEASES: ReleaseEntry[] = [
   {
-    version: '0.1.0',
-    tag: 'v0.1.0',
+    version: '0.1.1',
+    tag: 'v0.1.1',
     date: '2026-11-25',
     status: 'latest',
     statusLabel: '最新正式版',
+    summary:
+      '知识库更新与环境提示降噪优化：同步 lowcode-next 最新 dev（18cc3cca）扩展后端标准方法索引至 74 个 Handler / 565 个 Method；移除工作台常驻红色「受保护」标识，将写回二次确认调整为温和琥珀色提示。',
+    highlights: [
+      '同步 lowcode-next 最新 dev（18cc3cca）并重建静态知识库，新增生产领退料、条码历史与成本中心等标准方法契约',
+      '标准后端方法索引扩展至 74 个 Handler、565 个 Method（覆盖 13 个业务域），继续严格隔离 custom.* 租户定制目录',
+      '移除顶部常驻红色护栏横幅、左下角及输入栏红色「受保护」标识，生产/客户环境圆点改为紫罗兰色',
+      '保留写回平台前的输入环境名二次确认门禁，审批卡片内标签与提示区域改为温和琥珀色风格'
+    ],
+    groups: [
+      {
+        kind: 'feat',
+        label: '知识库同步与资产',
+        items: [
+          '拉取 lowcode-next 最新 dev（18cc3cca）并重建静态知识库，标准后端 Handler 由 68 个增至 74 个，标准 Method 由 535 个增至 565 个，新增生产领退料、条码历史与成本中心等模块契约。',
+          '在 GitHub Release v0.1.1 同步发布 Windows (x64) 与 macOS (Apple Silicon) 双端安装包、增量更新元数据及 Ed25519 签名验证清单（共 10 个资产）。'
+        ]
+      },
+      {
+        kind: 'improve',
+        label: '界面降噪与交互优化',
+        items: [
+          '移除工作区顶部常驻红色「受保护环境安全护栏」横幅、左下角环境切换按钮红底/角标以及聊天输入框底部的红色「受保护」胶囊，避免日常使用与错误提示混淆。',
+          '生产与客户环境圆点调整为紫罗兰色（自动兼容迁移历史配置文件），菜单与设置页改用克制的中性灰「写回需确认」说明。',
+          '保留写回、回滚及上传插件前的手动输入环境名二次确认机制，审批卡片内部标签与提示框改为温和的琥珀色警示样式。'
+        ]
+      }
+    ],
+    assets: [
+      {
+        id: 'v0.1.1-win-x64',
+        platform: 'win-x64',
+        label: 'Windows (x64)',
+        arch: 'x64 · NSIS 安装程序',
+        filename: 'Lacewing v0.1.1 · Windows 安装包 (.exe)',
+        sizeText: '175.1 MB',
+        sha256: '529a47e7d6d45b5b4ac4774182c675fe2a3d513fd72fb4a88b023d61c26b7418',
+        downloadPath:
+          'https://github.com/TingLen/Lacewing-agent-release/releases/download/v0.1.1/lacewing-agent-0.1.1-win-x64.exe',
+        note: '原始大小 183,593,631 字节 · 免 Node 免导证书，支持应用内一键升级'
+      },
+      {
+        id: 'v0.1.1-mac-arm64',
+        platform: 'mac-arm64',
+        label: 'macOS (Apple Silicon)',
+        arch: 'arm64 · DMG 磁盘映像',
+        filename: 'Lacewing v0.1.1 · macOS 安装包 (.dmg)',
+        sizeText: '188.3 MB',
+        sha256: 'bd0e421402757f4bb6bc388af1652bd53e3e8252f458c0e9325634b76ad7cd59',
+        downloadPath:
+          'https://github.com/TingLen/Lacewing-agent-release/releases/download/v0.1.1/lacewing-agent-0.1.1-mac-arm64.dmg',
+        note: '原始大小 197,495,153 字节 · 需拖入「应用程序」再打开；暂未发布 Intel Mac 包'
+      }
+    ],
+    releaseUrl: 'https://github.com/TingLen/Lacewing-agent-release/releases/tag/v0.1.1'
+  },
+  {
+    version: '0.1.0',
+    tag: 'v0.1.0',
+    date: '2026-11-25',
+    status: 'previous',
+    statusLabel: '历史正式版',
     summary:
       'Lacewing 正式更名与停靠式实时预览大版本发布：桌面应用全面升级为 Lacewing 与全新森林绿草蛉图标，上线三页签检查器、零重载热切换独立预览、点选 @节点、lowcode-next 后端方法知识库、自由画布工具与双层持久化记忆。',
     highlights: [
@@ -215,7 +276,7 @@ export const RELEASES: ReleaseEntry[] = [
         sha256: 'c5e5b2a2c2c9f3f2f7241a16712651f7c2aa31f09b2f312aaefa1e178de6e2b2',
         downloadPath:
           'https://github.com/TingLen/Lacewing-agent-release/releases/download/v0.0.10/lacewing-agent-0.0.10-mac-arm64.dmg',
-        note: '原始大小 189,502,898 字节 · macOS 独立安装助手验收基础版（建议优先下载最新 v0.1.0）'
+        note: '原始大小 189,502,898 字节 · macOS 独立安装助手验收基础版（建议优先下载最新 v0.1.1）'
       }
     ],
     releaseUrl: 'https://github.com/TingLen/Lacewing-agent-release/releases/tag/v0.0.10'
