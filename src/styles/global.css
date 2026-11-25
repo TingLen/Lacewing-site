@@ -1,0 +1,298 @@
+@import "tailwindcss";
+@import "@fontsource/lora/400.css";
+@import "@fontsource/lora/500.css";
+@import "@fontsource/lora/600.css";
+@import "@fontsource/lora/400-italic.css";
+@import "@fontsource/silkscreen/400.css";
+@import "@fontsource/silkscreen/700.css";
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/500.css";
+@import "@fontsource/jetbrains-mono/700.css";
+@import "./tokens.css";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--lw-bg);
+    color: var(--lw-ink);
+    font-family: var(--lw-font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: var(--lw-bg);
+    color: var(--lw-ink);
+    overflow-x: hidden;
+  }
+
+  html[data-site-theme='pixel'] body {
+    background-image: radial-gradient(var(--lw-border-soft) 1px, transparent 1px);
+    background-size: 14px 14px;
+    background-repeat: repeat;
+  }
+
+  button,
+  a {
+    outline-color: var(--lw-accent);
+  }
+}
+
+@layer components {
+  .font-editorial {
+    font-family: var(--lw-font-editorial);
+    letter-spacing: -0.015em;
+  }
+
+  html[data-site-theme='pixel'] .font-editorial {
+    font-family: var(--lw-font-sans);
+    letter-spacing: -0.01em;
+  }
+
+  .font-pixel {
+    font-family: var(--lw-font-mono);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  html[data-site-theme='pixel'] .font-pixel {
+    font-family: var(--lw-font-pixel);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+  }
+
+  .font-mono-code {
+    font-family: var(--lw-font-mono);
+  }
+
+  .lw-brand-wordmark {
+    font-family: var(--lw-font-editorial);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  html[data-site-theme='pixel'] .lw-brand-wordmark {
+    font-family: var(--lw-font-pixel);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* 双态 Logo 切换 */
+  .lw-logo-modern {
+    display: block;
+  }
+  .lw-logo-pixel {
+    display: none;
+  }
+  html[data-site-theme='pixel'] .lw-logo-modern {
+    display: none;
+  }
+  html[data-site-theme='pixel'] .lw-logo-pixel {
+    display: block;
+  }
+
+  /* 微妙纸张微纹（仅用于 Hero 与子页页眉） */
+  .lw-paper-texture {
+    background-color: var(--lw-bg);
+    background-image:
+      radial-gradient(rgba(28, 27, 25, 0.065) 1px, transparent 1px),
+      radial-gradient(rgba(28, 27, 25, 0.03) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: 0 0, 12px 12px;
+  }
+  html[data-site-theme='pixel'] .lw-paper-texture {
+    background-color: transparent;
+    background-image: none;
+  }
+
+  /* 细线分隔与无边框纸面容器 */
+  .lw-hairline-t {
+    border-top: 1px solid var(--lw-border-soft);
+  }
+  .lw-hairline-b {
+    border-bottom: 1px solid var(--lw-border-soft);
+  }
+  html[data-site-theme='pixel'] .lw-hairline-t {
+    border-top: 2px solid var(--lw-border);
+  }
+  html[data-site-theme='pixel'] .lw-hairline-b {
+    border-bottom: 2px solid var(--lw-border);
+  }
+
+  /* 莫兰迪柔和画布框（托底桌面应用真实截图） */
+  .lw-morandi-hero {
+    background: linear-gradient(135deg, #DFE5DD 0%, #EDE7DD 54%, #D7E0D8 100%);
+    border-radius: 20px;
+    box-shadow: inset 0 0 0 1px rgba(28, 27, 25, 0.06);
+  }
+  .lw-morandi-stage {
+    background: linear-gradient(145deg, #EAE6DD 0%, #E1E7E0 100%);
+    border-radius: 18px;
+    box-shadow: inset 0 0 0 1px rgba(28, 27, 25, 0.06);
+  }
+  html[data-site-theme='pixel'] .lw-morandi-hero,
+  html[data-site-theme='pixel'] .lw-morandi-stage {
+    background: var(--lw-surface-muted);
+    border: 2px solid var(--lw-border);
+    border-radius: 0;
+    box-shadow: 4px 4px 0 var(--lw-shadow);
+  }
+
+  /* 真实截图外框与阴影 */
+  .lw-shot-frame {
+    border-radius: 12px;
+    border: 1px solid rgba(28, 27, 25, 0.11);
+    background-color: #FFFFFF;
+    box-shadow:
+      0 2px 6px rgba(28, 27, 25, 0.06),
+      0 24px 56px -18px rgba(28, 27, 25, 0.22);
+  }
+  html[data-site-theme='pixel'] .lw-shot-frame {
+    border-radius: 0;
+    border: 2px solid var(--lw-border);
+    box-shadow: 4px 4px 0 var(--lw-shadow);
+  }
+
+  /* 按钮 */
+  .px-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: 1px solid var(--lw-border);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease, transform 120ms ease;
+    user-select: none;
+  }
+  .px-btn:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+  .px-btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  .px-btn-primary {
+    border-color: transparent;
+    background-color: var(--lw-accent);
+    color: var(--lw-accent-fg);
+  }
+  .px-btn-primary:hover:not(:disabled) {
+    background-color: var(--lw-accent-hover);
+  }
+
+  .px-btn-secondary {
+    background-color: var(--lw-surface);
+    color: var(--lw-ink);
+  }
+  .px-btn-secondary:hover:not(:disabled) {
+    background-color: var(--lw-surface-muted);
+    border-color: rgba(28, 27, 25, 0.28);
+  }
+
+  html[data-site-theme='pixel'] .px-btn {
+    border: 2px solid var(--lw-border);
+    box-shadow: 3px 3px 0 var(--lw-shadow);
+    border-radius: 0;
+    transition: transform 80ms ease, box-shadow 80ms ease, background-color 120ms ease;
+  }
+  html[data-site-theme='pixel'] .px-btn:hover:not(:disabled) {
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 var(--lw-shadow);
+  }
+  html[data-site-theme='pixel'] .px-btn:active:not(:disabled) {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--lw-shadow);
+  }
+
+  /* 顶部导航 */
+  .lw-header {
+    border-bottom: 1px solid var(--lw-border-soft);
+    background-color: rgba(248, 246, 240, 0.88);
+    backdrop-filter: blur(12px);
+  }
+  html[data-site-theme='pixel'] .lw-header {
+    border-bottom: 2px solid var(--lw-border);
+    background-color: rgba(244, 243, 238, 0.96);
+  }
+
+  /* 深炭苔绿页脚（区别于深李紫） */
+  .lw-footer-moss {
+    background-color: var(--lw-footer-bg);
+    color: var(--lw-footer-ink);
+  }
+
+  /* 森林绿承诺带 */
+  .lw-forest-banner {
+    background-color: var(--lw-forest);
+    color: var(--lw-forest-ink);
+  }
+  html[data-site-theme='pixel'] .lw-forest-banner {
+    border-top: 2px solid var(--lw-border);
+    border-bottom: 2px solid var(--lw-border);
+  }
+
+  /* 下载页轻量容器 */
+  .px-card {
+    background-color: var(--lw-surface);
+    border: 1px solid var(--lw-border);
+    border-radius: 14px;
+  }
+  .px-card-sm {
+    background-color: var(--lw-surface);
+    border: 1px solid var(--lw-border);
+    border-radius: 10px;
+  }
+  html[data-site-theme='pixel'] .px-card {
+    border: 2px solid var(--lw-border);
+    box-shadow: 4px 4px 0 var(--lw-shadow);
+    border-radius: 0;
+  }
+  html[data-site-theme='pixel'] .px-card-sm {
+    border: 2px solid var(--lw-border);
+    box-shadow: 3px 3px 0 var(--lw-shadow);
+    border-radius: 0;
+  }
+
+  .px-pixel-svg {
+    image-rendering: pixelated;
+    shape-rendering: crispEdges;
+  }
+
+  /* 水彩手绘羽化边缘融合纸底（closest-side 确保四角与四边完全隐去，不留方形边框痕） */
+  .lw-editorial-vignette {
+    mix-blend-mode: multiply;
+    opacity: 0.96;
+    -webkit-mask-image: radial-gradient(ellipse closest-side at 50% 50%, #000 58%, rgba(0, 0, 0, 0.45) 82%, transparent 99%);
+    mask-image: radial-gradient(ellipse closest-side at 50% 50%, #000 58%, rgba(0, 0, 0, 0.45) 82%, transparent 99%);
+  }
+  .lw-hero-illustration {
+    mix-blend-mode: multiply;
+    opacity: 0.96;
+    -webkit-mask-image: radial-gradient(ellipse closest-side at 50% 52%, #000 60%, rgba(0, 0, 0, 0.48) 84%, transparent 99%);
+    mask-image: radial-gradient(ellipse closest-side at 50% 52%, #000 60%, rgba(0, 0, 0, 0.48) 84%, transparent 99%);
+  }
+  html[data-site-theme='pixel'] .lw-editorial-vignette,
+  html[data-site-theme='pixel'] .lw-hero-illustration {
+    mix-blend-mode: normal;
+    opacity: 1;
+    -webkit-mask-image: none;
+    mask-image: none;
+    border: 2px solid var(--lw-border);
+    box-shadow: 4px 4px 0 var(--lw-shadow);
+  }
+}
+
+.px-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.px-scroll::-webkit-scrollbar-track {
+  background: var(--lw-surface-muted);
+}
+.px-scroll::-webkit-scrollbar-thumb {
+  background: var(--lw-border);
+}

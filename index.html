@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN" data-site-theme="modern">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Lacewing — 面向 LC-IDE 的桌面端 AI 开发与配置工作台</title>
+    <meta
+      name="description"
+      content="Lacewing 是面向 LC-IDE 的桌面端 AI 开发与配置工作台。自然语言提需求，本地生成草稿，经停靠预览与差异确认后安全写回。"
+    />
+    <script>
+      (function () {
+        try {
+          var saved = window.localStorage.getItem('lacewing-site-theme');
+          document.documentElement.dataset.siteTheme = saved === 'pixel' ? 'pixel' : 'modern';
+        } catch (e) {
+          document.documentElement.dataset.siteTheme = 'modern';
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

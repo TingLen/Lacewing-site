@@ -1,0 +1,75 @@
+/* Lacewing 温暖纸感社论设计令牌（默认 modern 暖纸森林绿 + 可选 pixel 纸墨像素） */
+:root,
+html[data-site-theme='modern'] {
+  --lw-bg: #F8F6F0;
+  --lw-surface: #FCFBF7;
+  --lw-surface-muted: #F2EFE7;
+  --lw-surface-code: #EFECE3;
+  --lw-ink: #1C1B19;
+  --lw-ink-muted: #57544D;
+  --lw-ink-subtle: #807B72;
+  --lw-border: rgba(28, 27, 25, 0.14);
+  --lw-border-soft: rgba(28, 27, 25, 0.08);
+  --lw-shadow: rgba(28, 27, 25, 0.12);
+
+  /* 主强调色：森林墨绿 + 鼠尾草辅助绿 */
+  --lw-accent: #1E3A2F;
+  --lw-accent-hover: #152B22;
+  --lw-accent-sage: #2D6A4F;
+  --lw-accent-soft: #E8F0EA;
+  --lw-accent-fg: #FCFBF7;
+
+  /* 辅助暖琥珀（目录指针与警示边线） */
+  --lw-warm: #C88A36;
+  --lw-warm-soft: #FAF1DF;
+  --lw-warm-fg: #1C1B19;
+
+  --lw-danger: #B94A39;
+  --lw-danger-soft: #FAE8E5;
+
+  /* 森林绿承诺带 + 深炭苔绿页脚（区别于冷黑或李紫） */
+  --lw-forest: #1E3A2F;
+  --lw-forest-ink: #F5F2EB;
+  --lw-forest-muted: rgba(245, 242, 235, 0.78);
+  --lw-footer-bg: #262B27;
+  --lw-footer-ink: #F5F2EB;
+  --lw-footer-muted: rgba(245, 242, 235, 0.68);
+
+  --lw-font-editorial: 'Lora', 'Songti SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  --lw-font-pixel: 'Silkscreen', 'JetBrains Mono', monospace;
+  --lw-font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --lw-font-sans: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', system-ui, -apple-system, sans-serif;
+}
+
+html[data-site-theme='pixel'] {
+  --lw-bg: #F4F3EE;
+  --lw-surface: #FCFBF7;
+  --lw-surface-muted: #EAE8E0;
+  --lw-surface-code: #EFECE3;
+  --lw-ink: #181A18;
+  --lw-ink-muted: #525852;
+  --lw-ink-subtle: #707770;
+  --lw-border: #181A18;
+  --lw-border-soft: #C9C7BE;
+  --lw-shadow: #181A18;
+
+  --lw-accent: #22784B;
+  --lw-accent-hover: #195D3A;
+  --lw-accent-sage: #22784B;
+  --lw-accent-soft: #D6F5E3;
+  --lw-accent-fg: #FFFFFF;
+
+  --lw-warm: #D98A16;
+  --lw-warm-soft: #FDF1D6;
+  --lw-warm-fg: #181A18;
+
+  --lw-danger: #C94A38;
+  --lw-danger-soft: #FBE6E3;
+
+  --lw-forest: #181A18;
+  --lw-forest-ink: #FCFBF7;
+  --lw-forest-muted: rgba(252, 251, 247, 0.78);
+  --lw-footer-bg: #181A18;
+  --lw-footer-ink: #FCFBF7;
+  --lw-footer-muted: rgba(252, 251, 247, 0.68);
+}
