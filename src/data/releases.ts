@@ -1,30 +1,31 @@
 import type { ReleaseEntry } from '../types/site';
 
 /**
- * Lacewing 版本发布与主线预览清单。
- * 约定：主线已合入但尚未打正式 Tag 发版的能力必须标记为 status: 'upcoming'，
- * 严禁将待发版能力混入已发布的 v0.0.12 安装包说明中。
+ * Lacewing 版本发布清单。
+ * 约定：仅将已打正式 Release Tag 并完成公开资产校验的版本标记为 status: 'latest' / 'previous'；
+ * 未打包发版的主线预研能力如需提前展示，应单独使用 status: 'upcoming'，严禁混入已发布安装包。
  */
 export const RELEASES: ReleaseEntry[] = [
   {
-    version: '主线预览',
-    tag: 'master · 未打 Tag',
-    date: '2026-11-24',
-    status: 'upcoming',
-    statusLabel: '主线预览 · 待发版',
+    version: '0.1.0',
+    tag: 'v0.1.0',
+    date: '2026-11-25',
+    status: 'latest',
+    statusLabel: '最新正式版',
     summary:
-      '以下能力已合入代码主线，尚未打正式 Release Tag 与构建公开安装包；当前正式可下载安装包仍为 v0.0.12。',
+      'Lacewing 正式更名与停靠式实时预览大版本发布：桌面应用全面升级为 Lacewing 与全新森林绿草蛉图标，上线三页签检查器、零重载热切换独立预览、点选 @节点、lowcode-next 后端方法知识库、自由画布工具与双层持久化记忆。',
     highlights: [
-      '右侧停靠式实时预览（三页签检查器 + 独立窗口零重载热切换）',
-      '点选页面元素自动插入 @节点 标签、390×844 移动端真机画框、适应/100% 缩放与页面自检',
-      'lowcode-next 后端方法静态知识库（68 个标准 Handler / 535 个标准 Method）按需检索',
+      '品牌全面升级为 Lacewing（lacewing-agent），启用全新森林绿展翅草蛉桌面图标与工作台标识',
+      '右侧停靠式实时预览（三页签检查器 + 独立窗口零重载热切换）与点选页面元素自动写入 @节点',
+      '390×844 移动端真机画框、适应/100% 缩放、页面自检，以及 lowcode-next 后端方法静态知识库按需检索',
       '大屏与打印标签自由画布编排、定时任务 Cron 校验配置、用户级 + 应用级双层跨会话记忆'
     ],
     groups: [
       {
         kind: 'feat',
-        label: '主线新特性（待下个正式版打包发布）',
+        label: '新特性与发布资产',
         items: [
+          '应用品牌、桌面图标与安装资产正式升级为 Lacewing（lacewing-agent），在 GitHub Release v0.1.0 同步发布 Windows (x64) 与 macOS (Apple Silicon) 双端安装包及 Ed25519 签名验证清单（共 10 个资产）。',
           '右侧统一检查器升级为「改动审阅 / 会话文件 / 实时预览」三页签，基于独立内存会话承载实时预览，弹出独立窗口与吸回侧栏零重载热切换不丢表单状态与请求记录。',
           '实时预览支持「点选元素」写入 @节点、桌面端「适应 / 100%」缩放、移动端 390×844 真机画框，以及「页面自检」（汇总控制台错误、运行时异常与页面截图）。',
           '接入 lowcode-next 后端方法静态知识库，按需检索触发条件、入参键、4 类返回契约与异常处理约定（严格排除租户定制包）。',
@@ -43,15 +44,40 @@ export const RELEASES: ReleaseEntry[] = [
         ]
       }
     ],
-    assets: [],
-    releaseUrl: 'https://github.com/TingLen/Lacewing-agent-release/releases'
+    assets: [
+      {
+        id: 'v0.1.0-win-x64',
+        platform: 'win-x64',
+        label: 'Windows (x64)',
+        arch: 'x64 · NSIS 安装程序',
+        filename: 'Lacewing v0.1.0 · Windows 安装包 (.exe)',
+        sizeText: '175.1 MB',
+        sha256: '42c4f74fc84b068c2ad11c06e070da8ae56a1713da09cc3523236629059c6ce9',
+        downloadPath:
+          'https://github.com/TingLen/Lacewing-agent-release/releases/download/v0.1.0/lacewing-agent-0.1.0-win-x64.exe',
+        note: '原始大小 183,591,265 字节 · 免 Node 免导证书，支持应用内一键升级'
+      },
+      {
+        id: 'v0.1.0-mac-arm64',
+        platform: 'mac-arm64',
+        label: 'macOS (Apple Silicon)',
+        arch: 'arm64 · DMG 磁盘映像',
+        filename: 'Lacewing v0.1.0 · macOS 安装包 (.dmg)',
+        sizeText: '188.4 MB',
+        sha256: 'ea721d8a0be5a4f38d074f20213a0f403e01416f0dbe380c55717d19cb6b8ad0',
+        downloadPath:
+          'https://github.com/TingLen/Lacewing-agent-release/releases/download/v0.1.0/lacewing-agent-0.1.0-mac-arm64.dmg',
+        note: '原始大小 197,501,148 字节 · 需拖入「应用程序」再打开；暂未发布 Intel Mac 包'
+      }
+    ],
+    releaseUrl: 'https://github.com/TingLen/Lacewing-agent-release/releases/tag/v0.1.0'
   },
   {
     version: '0.0.12',
     tag: 'v0.0.12',
     date: '2026-11-17',
-    status: 'latest',
-    statusLabel: '最新正式版',
+    status: 'previous',
+    statusLabel: '历史正式版',
     summary:
       '公开双端汇集发行版：首次在同一 Release 中同时提供 Windows x64 NSIS 安装包与 macOS Apple Silicon DMG/ZIP（共 10 个校验与更新元数据资产），用于验证从 v0.0.11 到 v0.0.12 的端到端在线检查、下载与重启覆盖更新链路。',
     highlights: [
@@ -189,7 +215,7 @@ export const RELEASES: ReleaseEntry[] = [
         sha256: 'c5e5b2a2c2c9f3f2f7241a16712651f7c2aa31f09b2f312aaefa1e178de6e2b2',
         downloadPath:
           'https://github.com/TingLen/Lacewing-agent-release/releases/download/v0.0.10/lacewing-agent-0.0.10-mac-arm64.dmg',
-        note: '原始大小 189,502,898 字节 · macOS 独立安装助手验收基础版（建议优先下载最新 v0.0.12）'
+        note: '原始大小 189,502,898 字节 · macOS 独立安装助手验收基础版（建议优先下载最新 v0.1.0）'
       }
     ],
     releaseUrl: 'https://github.com/TingLen/Lacewing-agent-release/releases/tag/v0.0.10'
