@@ -7,11 +7,72 @@ import type { ReleaseEntry } from '../types/site';
  */
 export const RELEASES: ReleaseEntry[] = [
   {
+    version: '0.1.3',
+    tag: 'v0.1.3',
+    date: '2026-11-26',
+    status: 'latest',
+    statusLabel: '最新正式版',
+    summary:
+      '同环境多账号按租户隔离会话与登录态自动核验：解决同一环境频繁切换不同账号/租户时左侧会话列表、应用文件夹与快捷搜索混显的问题，并在窗口切回前台时自动核验浏览器端登录态变化。',
+    highlights: [
+      '同环境多账号按租户（tenant）隔离左侧会话列表、应用文件夹、⌘K 搜索、应用级记忆候选与首页默认选中应用',
+      '主窗口切回前台（focus）及设置页「刷新状态」自动静默核验服务端会话，401 失效即自动切回未授权引导',
+      '新增跨租户运行时安全保护，阻断向其他租户历史会话发消息、切应用、开预览及跨租户恢复未完成提交',
+      '加载当前租户应用列表时自动回填存量历史会话的租户归属，切回原租户可无缝继续原有工作'
+    ],
+    groups: [
+      {
+        kind: 'feat',
+        label: '多账号租户隔离',
+        items: [
+          '在浏览器授权与用户信息校验时记录并加密持久化当前租户标识（tenant / tenantName），新建会话与本地索引同步绑定租户归属；未授权状态下隐藏历史会话并引导重新授权。',
+          '左侧对话列表、应用文件夹、⌘K 命令面板与跨会话记忆选择器均按当前授权租户过滤，彻底消除跨租户切号时同名应用混淆与上下文错乱；切回原租户自动还原历史会话与上次选中的应用。',
+          '为存量无租户标识的老会话提供按应用列表自动回填迁移能力，并拦截对异租户会话发消息、切应用、预览打开及未完成提交继续/回滚等危险写入操作。'
+        ]
+      },
+      {
+        kind: 'improve',
+        label: '登录态自动核验与发布资产',
+        items: [
+          '新增窗口聚焦（focus）与设置页「刷新状态」登录态静默核验：在网站端切换租户或退出换号后，切回 Lacewing 自动感知 401 并清除失效凭证，仅保留「在浏览器中授权 / 退出授权」单按钮操作；网络超时或服务端 5xx 异常绝不误清本地登录态。',
+          '在 GitHub Release v0.1.3 同步发布 Windows (x64) 与 macOS (Apple Silicon) 双端安装包、增量更新元数据及 Ed25519 签名验证清单（共 10 个资产）。'
+        ]
+      }
+    ],
+    assets: [
+      {
+        id: 'v0.1.3-win-x64',
+        platform: 'win-x64',
+        label: 'Windows (x64)',
+        arch: 'x64 · NSIS 安装程序',
+        filename: 'Lacewing v0.1.3 · Windows 安装包 (.exe)',
+        sizeText: '175.1 MB',
+        sha256: '2527af1d52c8026ad455256e019645e84e3cc620c82300f7360ab1c98daf6a58',
+        downloadPath:
+          'https://github.com/TingLen/Lacewing-agent-release/releases/download/v0.1.3/lacewing-agent-0.1.3-win-x64.exe',
+        note: '原始大小 183,597,886 字节 · 免 Node 免导证书，支持应用内一键升级'
+      },
+      {
+        id: 'v0.1.3-mac-arm64',
+        platform: 'mac-arm64',
+        label: 'macOS (Apple Silicon)',
+        arch: 'arm64 · DMG 磁盘映像',
+        filename: 'Lacewing v0.1.3 · macOS 安装包 (.dmg)',
+        sizeText: '188.3 MB',
+        sha256: '0cb8e76fd5032950377ffb658e004fb270dd3c2a3f5206239f1c7e79493a3ac8',
+        downloadPath:
+          'https://github.com/TingLen/Lacewing-agent-release/releases/download/v0.1.3/lacewing-agent-0.1.3-mac-arm64.dmg',
+        note: '原始大小 197,492,731 字节 · 需拖入「应用程序」再打开；暂未发布 Intel Mac 包'
+      }
+    ],
+    releaseUrl: 'https://github.com/TingLen/Lacewing-agent-release/releases/tag/v0.1.3'
+  },
+  {
     version: '0.1.2',
     tag: 'v0.1.2',
     date: '2026-11-25',
-    status: 'latest',
-    statusLabel: '最新正式版',
+    status: 'previous',
+    statusLabel: '历史正式版',
     summary:
       '顶栏窄屏自适应修复：修复右侧检查器（尤其是停靠式实时预览）拉宽时，中间区域顶部工具栏横向溢出并与右边栏重合的样式问题，并为主舞台补充容器查询三级响应式布局。',
     highlights: [
@@ -336,7 +397,7 @@ export const RELEASES: ReleaseEntry[] = [
         sha256: 'c5e5b2a2c2c9f3f2f7241a16712651f7c2aa31f09b2f312aaefa1e178de6e2b2',
         downloadPath:
           'https://github.com/TingLen/Lacewing-agent-release/releases/download/v0.0.10/lacewing-agent-0.0.10-mac-arm64.dmg',
-        note: '原始大小 189,502,898 字节 · macOS 独立安装助手验收基础版（建议优先下载最新 v0.1.2）'
+        note: '原始大小 189,502,898 字节 · macOS 独立安装助手验收基础版（建议优先下载最新 v0.1.3）'
       }
     ],
     releaseUrl: 'https://github.com/TingLen/Lacewing-agent-release/releases/tag/v0.0.10'
