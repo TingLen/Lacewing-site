@@ -7,11 +7,71 @@ import type { ReleaseEntry } from '../types/site';
  */
 export const RELEASES: ReleaseEntry[] = [
   {
-    version: '0.1.3',
-    tag: 'v0.1.3',
+    version: '0.1.4',
+    tag: 'v0.1.4',
     date: '2026-11-26',
     status: 'latest',
     statusLabel: '最新正式版',
+    summary:
+      '对话区思考流、工具轨迹与回复渲染全面重构：将同轮思考推演与工具调用收拢为紧凑降噪的统一执行轨迹，并修复流式代码块高亮闪烁、宽表挤压及回到底部浮钮遮挡问题。',
+    highlights: [
+      '统一执行轨迹（ExecutionTrace）归并同轮思考与工具调用，带实时秒表并在正文输出约 600ms 后平滑自动收起',
+      '思考过程改用左侧引用轨排版，流式思考采用 4.5 行渐隐视窗并自动滚底，支持随时展开全文',
+      '工具调用瘦身为 29px 紧凑单行与中文业务语义摘要，点击按需展开「入参 / 返回结果」双视图并支持直达右侧检查器',
+      '修复流式代码块 Shiki 高亮反复闪烁清空，新增宽表横向滚动、长代码默认折叠、防遮挡回底浮钮及中断/报错一键恢复按钮'
+    ],
+    groups: [
+      {
+        kind: 'feat',
+        label: '统一执行轨迹与思维流重构',
+        items: [
+          '将同轮多段思考推演与连续工具调用合并为统一 ExecutionTrace 轨迹，告别层层嵌套边框卡片与满屏绿色胶囊；历史无错轨迹默认收起，出错步骤仅在局部自动轻展开报错摘要。',
+          '思考过程采用左侧竖线引用轨与正文无衬线字体渲染，流式期间启用 4.5 行渐隐预览视窗并自动跟随滚底；工具行以中文语义提取业务目标，提供「合并同类只读步」开关及「查看改动 / 查看文件 / 查看预览」右侧检查器快捷跳转。'
+        ]
+      },
+      {
+        kind: 'improve',
+        label: '回复区排版打磨与发布资产',
+        items: [
+          '修复代码块流式生成时 Shiki 高亮反复闪烁的问题，支持超过 24 行的代码块默认折叠与总行数显示，并为宽表格补充横向滚动包装，避免多列表格被挤压变形；将「回到底部」浮钮改为居中锚定于消息舞台底部，彻底解决高输入框遮挡问题，同时补齐本轮产出物摘要条、内联记忆撤销与中断/报错恢复操作按钮。',
+          '在 GitHub Release v0.1.4 同步发布 Windows (x64) 与 macOS (Apple Silicon) 双端安装包、增量更新元数据及 Ed25519 签名验证清单（共 10 个资产）。'
+        ]
+      }
+    ],
+    assets: [
+      {
+        id: 'v0.1.4-win-x64',
+        platform: 'win-x64',
+        label: 'Windows (x64)',
+        arch: 'x64 · NSIS 安装程序',
+        filename: 'Lacewing v0.1.4 · Windows 安装包 (.exe)',
+        sizeText: '175.1 MB',
+        sha256: '00fb8219a3ea4821869ca573ec8a58f53638eda309b3f2d17c85e7db4ce2acb5',
+        downloadPath:
+          'https://github.com/TingLen/Lacewing-agent-release/releases/download/v0.1.4/lacewing-agent-0.1.4-win-x64.exe',
+        note: '原始大小 183,606,357 字节 · 免 Node 免导证书，支持应用内一键升级'
+      },
+      {
+        id: 'v0.1.4-mac-arm64',
+        platform: 'mac-arm64',
+        label: 'macOS (Apple Silicon)',
+        arch: 'arm64 · DMG 磁盘映像',
+        filename: 'Lacewing v0.1.4 · macOS 安装包 (.dmg)',
+        sizeText: '188.4 MB',
+        sha256: '20e3ac89585c94ffe4cb6d67cb395fead30bc7b0676da3263b3d6090cf14a319',
+        downloadPath:
+          'https://github.com/TingLen/Lacewing-agent-release/releases/download/v0.1.4/lacewing-agent-0.1.4-mac-arm64.dmg',
+        note: '原始大小 197,507,225 字节 · 需拖入「应用程序」再打开；暂未发布 Intel Mac 包'
+      }
+    ],
+    releaseUrl: 'https://github.com/TingLen/Lacewing-agent-release/releases/tag/v0.1.4'
+  },
+  {
+    version: '0.1.3',
+    tag: 'v0.1.3',
+    date: '2026-11-26',
+    status: 'previous',
+    statusLabel: '历史正式版',
     summary:
       '同环境多账号按租户隔离会话与登录态自动核验：解决同一环境频繁切换不同账号/租户时左侧会话列表、应用文件夹与快捷搜索混显的问题，并在窗口切回前台时自动核验浏览器端登录态变化。',
     highlights: [
@@ -397,7 +457,7 @@ export const RELEASES: ReleaseEntry[] = [
         sha256: 'c5e5b2a2c2c9f3f2f7241a16712651f7c2aa31f09b2f312aaefa1e178de6e2b2',
         downloadPath:
           'https://github.com/TingLen/Lacewing-agent-release/releases/download/v0.0.10/lacewing-agent-0.0.10-mac-arm64.dmg',
-        note: '原始大小 189,502,898 字节 · macOS 独立安装助手验收基础版（建议优先下载最新 v0.1.3）'
+        note: '原始大小 189,502,898 字节 · macOS 独立安装助手验收基础版（建议优先下载最新 v0.1.4）'
       }
     ],
     releaseUrl: 'https://github.com/TingLen/Lacewing-agent-release/releases/tag/v0.0.10'
