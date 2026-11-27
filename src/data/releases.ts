@@ -7,11 +7,71 @@ import type { ReleaseEntry } from '../types/site';
  */
 export const RELEASES: ReleaseEntry[] = [
   {
+    version: '0.1.5',
+    tag: 'v0.1.5',
+    date: '2026-11-27',
+    status: 'latest',
+    statusLabel: '最新正式版',
+    summary:
+      '契约驱动 Schema 语义编辑与预览四合一自检：新增零硬编码的高层语义编辑工具、带抽屉/弹窗子页面的整页递归克隆与栅格智能续排，并将预览自检升级为请求/报错/异常/DOM 几何四合一联动体检及写接口安全拦截。',
+    highlights: [
+      '从平台源码契约自动抽取槽位规则，新增数据源绑定、字段配置、字典/远程选项、值映射及表格列与动作编排等高层语义工具，减少模型盲猜路径与参数出错',
+      '新增整页递归克隆（自动一并克隆关联抽屉/弹窗子页面并重映射动作键）与栅格智能续排/重排工具，自动校验多列紧凑排版与跨行对齐',
+      '预览自检（inspect_preview）升级为请求核对、Console 报错、未捕获异常与 DOM 几何布局四合一检查，并对写接口触发预览态安全拦截；提交前自动提示未完成自检的改动',
+      '拆解桌面端扩展、预览控制、Agent Host、主进程、状态库与对话区核心模块，并构建覆盖 12 类典型场景的离线/实战评测基准套件'
+    ],
+    groups: [
+      {
+        kind: 'feat',
+        label: '契约驱动 Schema 编辑与整页克隆',
+        items: [
+          '基于 LC-IDE 组件与槽位契约沉淀零硬编码语义工具集，补齐表单值映射的第 9 类在线 JS 静态校验，并修复真实编辑场景中空路径静默创建、权限空操作与预览抓包匹配错乱等稳定性问题。',
+          '新增整页递归克隆与栅格布局智能续排原语：复制页面时自动携带并重写全部关联抽屉与弹窗子页面，保持源页面零污染；追加或调整字段时优先遵循容器已有列宽节奏并检测尾部失衡。'
+        ]
+      },
+      {
+        kind: 'improve',
+        label: '预览四合一自检、架构重构与发布资产',
+        items: [
+          '重构工具扩展、预览拦截与桌面端主渲染骨架为高内聚模块，引入预览写操作安全保护门、提交前未验证提示以及可量化的 12 场景 Eval 评测套件，全面提升复杂表单改造的一次通过率。',
+          '在 GitHub Release v0.1.5 同步发布 Windows (x64) 与 macOS (Apple Silicon) 双端安装包、增量更新元数据及 Ed25519 签名验证清单（共 10 个资产）。'
+        ]
+      }
+    ],
+    assets: [
+      {
+        id: 'v0.1.5-win-x64',
+        platform: 'win-x64',
+        label: 'Windows (x64)',
+        arch: 'x64 · NSIS 安装程序',
+        filename: 'Lacewing v0.1.5 · Windows 安装包 (.exe)',
+        sizeText: '175.3 MB',
+        sha256: 'ea83d0b94e46661bf2893faf57e9ba8744881ab0834fa96073fc90de952afae2',
+        downloadPath:
+          'https://github.com/TingLen/Lacewing-agent-release/releases/download/v0.1.5/lacewing-agent-0.1.5-win-x64.exe',
+        note: '原始大小 183,800,365 字节 · 免 Node 免导证书，支持应用内一键升级'
+      },
+      {
+        id: 'v0.1.5-mac-arm64',
+        platform: 'mac-arm64',
+        label: 'macOS (Apple Silicon)',
+        arch: 'arm64 · DMG 磁盘映像',
+        filename: 'Lacewing v0.1.5 · macOS 安装包 (.dmg)',
+        sizeText: '188.5 MB',
+        sha256: '2ea4cf9a05c9e83ad2af6895602c9692fd4f6ca34ff67165948d112c7c87b21c',
+        downloadPath:
+          'https://github.com/TingLen/Lacewing-agent-release/releases/download/v0.1.5/lacewing-agent-0.1.5-mac-arm64.dmg',
+        note: '原始大小 197,609,085 字节 · 需拖入「应用程序」再打开；暂未发布 Intel Mac 包'
+      }
+    ],
+    releaseUrl: 'https://github.com/TingLen/Lacewing-agent-release/releases/tag/v0.1.5'
+  },
+  {
     version: '0.1.4',
     tag: 'v0.1.4',
     date: '2026-11-26',
-    status: 'latest',
-    statusLabel: '最新正式版',
+    status: 'previous',
+    statusLabel: '历史正式版',
     summary:
       '对话区思考流、工具轨迹与回复渲染全面重构：将同轮思考推演与工具调用收拢为紧凑降噪的统一执行轨迹，并修复流式代码块高亮闪烁、宽表挤压及回到底部浮钮遮挡问题。',
     highlights: [
@@ -457,7 +517,7 @@ export const RELEASES: ReleaseEntry[] = [
         sha256: 'c5e5b2a2c2c9f3f2f7241a16712651f7c2aa31f09b2f312aaefa1e178de6e2b2',
         downloadPath:
           'https://github.com/TingLen/Lacewing-agent-release/releases/download/v0.0.10/lacewing-agent-0.0.10-mac-arm64.dmg',
-        note: '原始大小 189,502,898 字节 · macOS 独立安装助手验收基础版（建议优先下载最新 v0.1.4）'
+        note: '原始大小 189,502,898 字节 · macOS 独立安装助手验收基础版（建议优先下载最新 v0.1.5）'
       }
     ],
     releaseUrl: 'https://github.com/TingLen/Lacewing-agent-release/releases/tag/v0.0.10'
