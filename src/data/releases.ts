@@ -7,11 +7,71 @@ import type { ReleaseEntry } from '../types/site';
  */
 export const RELEASES: ReleaseEntry[] = [
   {
-    version: '0.1.5',
-    tag: 'v0.1.5',
+    version: '0.1.6',
+    tag: 'v0.1.6',
     date: '2026-11-27',
     status: 'latest',
     statusLabel: '最新正式版',
+    summary:
+      '会话恢复与 Agent Host 启动稳定性修复：修复主进程共享模块被拆分至 chunks 子目录后恢复历史会话报错找不到 agent-host.js 的问题，并修复子进程启动失败时握手永久挂起的问题。',
+    highlights: [
+      '修复恢复历史会话或首次拉起 Agent Host 时，因构建分块落入 chunks 目录导致的 ERR_MODULE_NOT_FOUND（找不到 agent-host.js）故障',
+      '采用兼容 out/main 同级、上级目录及 app.getAppPath() 的多级入口解析策略，确保开发与打包态均准确定位',
+      '修复 Agent Host 在发出 ready 前异常退出导致 start() 永久挂起的问题，现在会及时报错、清理状态并支持自动重新拉起',
+      '同步加固主窗口 preload 与渲染页入口路径解析，防范后续构建分包引发同类路径失效问题'
+    ],
+    groups: [
+      {
+        kind: 'fix',
+        label: '会话恢复与 Agent Host 启动修复',
+        items: [
+          '重构 AgentHostManager 入口定位逻辑（resolveAgentHostEntry），不再假设模块始终位于 out/main 根目录，彻底解决 electron-vite 分包到 out/main/chunks 后恢复会话报找不到 agent-host.js 的问题。',
+          '为 Agent Host 启动握手补充异常退出 reject 清理路径，并加固主窗口 preload 与渲染页入口文件解析（resolveOutFile），避免启动阶段卡死或路径偏移。'
+        ]
+      },
+      {
+        kind: 'improve',
+        label: '双端打包校验与发布资产',
+        items: [
+          '补充 AgentHostManager 路径解析与启动失败重连单元测试，通过全仓类型检查、135 个测试文件验证及 macOS ad-hoc 深层签名校验。',
+          '在 GitHub Release v0.1.6 同步发布 Windows (x64) 与 macOS (Apple Silicon) 双端安装包、增量更新元数据及 Ed25519 签名验证清单（共 10 个资产）。'
+        ]
+      }
+    ],
+    assets: [
+      {
+        id: 'v0.1.6-win-x64',
+        platform: 'win-x64',
+        label: 'Windows (x64)',
+        arch: 'x64 · NSIS 安装程序',
+        filename: 'Lacewing v0.1.6 · Windows 安装包 (.exe)',
+        sizeText: '175.3 MB',
+        sha256: 'df5e30ec6f99c7f7ec5bebac5ea0dcc7ef390e0b80a0703aa5ef5d5ae61e0d7e',
+        downloadPath:
+          'https://github.com/TingLen/Lacewing-agent-release/releases/download/v0.1.6/lacewing-agent-0.1.6-win-x64.exe',
+        note: '原始大小 183,802,211 字节 · 免 Node 免导证书，支持应用内一键升级'
+      },
+      {
+        id: 'v0.1.6-mac-arm64',
+        platform: 'mac-arm64',
+        label: 'macOS (Apple Silicon)',
+        arch: 'arm64 · DMG 磁盘映像',
+        filename: 'Lacewing v0.1.6 · macOS 安装包 (.dmg)',
+        sizeText: '188.5 MB',
+        sha256: '2a3cfb7b6ccf3f44624c682001482bb6f627e06b5e838c8af4e5187583834804',
+        downloadPath:
+          'https://github.com/TingLen/Lacewing-agent-release/releases/download/v0.1.6/lacewing-agent-0.1.6-mac-arm64.dmg',
+        note: '原始大小 197,609,505 字节 · 需拖入「应用程序」再打开；暂未发布 Intel Mac 包'
+      }
+    ],
+    releaseUrl: 'https://github.com/TingLen/Lacewing-agent-release/releases/tag/v0.1.6'
+  },
+  {
+    version: '0.1.5',
+    tag: 'v0.1.5',
+    date: '2026-11-27',
+    status: 'previous',
+    statusLabel: '历史正式版',
     summary:
       '契约驱动 Schema 语义编辑与预览四合一自检：新增零硬编码的高层语义编辑工具、带抽屉/弹窗子页面的整页递归克隆与栅格智能续排，并将预览自检升级为请求/报错/异常/DOM 几何四合一联动体检及写接口安全拦截。',
     highlights: [
@@ -517,7 +577,7 @@ export const RELEASES: ReleaseEntry[] = [
         sha256: 'c5e5b2a2c2c9f3f2f7241a16712651f7c2aa31f09b2f312aaefa1e178de6e2b2',
         downloadPath:
           'https://github.com/TingLen/Lacewing-agent-release/releases/download/v0.0.10/lacewing-agent-0.0.10-mac-arm64.dmg',
-        note: '原始大小 189,502,898 字节 · macOS 独立安装助手验收基础版（建议优先下载最新 v0.1.5）'
+        note: '原始大小 189,502,898 字节 · macOS 独立安装助手验收基础版（建议优先下载最新 v0.1.6）'
       }
     ],
     releaseUrl: 'https://github.com/TingLen/Lacewing-agent-release/releases/tag/v0.0.10'
